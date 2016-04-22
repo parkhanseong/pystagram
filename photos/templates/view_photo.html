@@ -1,0 +1,33 @@
+{% load my_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ photo.pk }}번 사진 게시물</title>
+    </head>
+
+    <body>
+        {% addnim %}
+        <p>작성자 : {{ photo.user }}</p>
+        <p>접속자 : {{ request.user }}</p>
+        {% end_add_nim %}
+
+        <p>
+        <img src="{{ photo.image.url }}" />
+        </p>
+
+        <!-- <p>
+            <a href="{% url 'photos:like_photo' pk=photo.pk %}">
+                {% if photo|did_like:request.user %}
+                    좋아요 취소
+                {% else %}
+                    좋아요
+                {% endif %}
+            </a>
+        </p> -->
+
+        <div>
+            {{ photo.content }}
+        </div>
+
+    </body>
+</html>
